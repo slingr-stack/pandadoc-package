@@ -1,3 +1,16 @@
+var api = require('./api.js');
+
+var httpService = svc.http;
+//var pandaDocService = svc.pandadoc;
+var pandaDocService = {
+    _get: function(options) {
+        return httpService._get(api.setRequest(options));
+    },
+    _post: function(options) {
+        return httpService._post(api.setRequest(options));
+    }
+}
+
 exports.documents = {};
 
 exports.documents.details = {};
@@ -35,7 +48,7 @@ exports.documents.get = function(documentId, httpOptions) {
     }
     sys.logs.debug('[pandadoc] GET from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._get(options);
+    return pandaDocService._get(options);
 };
 
 exports.documents.post = function(fileId, httpOptions) {
@@ -52,7 +65,7 @@ exports.documents.post = function(fileId, httpOptions) {
             url = parse('/documents');
             break;
         case 2:
-            return endpoint.post({
+            return pandaDocService.post({
                 path: '/documents',
                 multipart: true,
                 parts: [
@@ -75,7 +88,7 @@ exports.documents.post = function(fileId, httpOptions) {
     }
     sys.logs.debug('[pandadoc] POST from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._post(options);
+    return pandaDocService._post(options);
 };
 
 exports.documents.details.get = function(documentId, httpOptions) {
@@ -86,7 +99,7 @@ exports.documents.details.get = function(documentId, httpOptions) {
     var url = parse('/documents/:documentId/details', [documentId]);
     sys.logs.debug('[pandadoc] GET from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._get(options);
+    return pandaDocService._get(options);
 };
 
 exports.documents.send.post = function(documentId, httpOptions) {
@@ -97,7 +110,7 @@ exports.documents.send.post = function(documentId, httpOptions) {
     var url = parse('/documents/:documentId/send', [documentId]);
     sys.logs.debug('[pandadoc] POST from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._post(options);
+    return pandaDocService._post(options);
 };
 
 exports.documents.session.post = function(documentId, httpOptions) {
@@ -108,7 +121,7 @@ exports.documents.session.post = function(documentId, httpOptions) {
     var url = parse('/documents/:documentId/session', [documentId]);
     sys.logs.debug('[pandadoc] POST from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    var res = endpoint._post(options);
+    var res = pandaDocService._post(options);
     res.link = 'https://app.pandadoc.com/s/'+res.id;
     return res;
 };
@@ -129,14 +142,14 @@ exports.documents.download.get = function(documentId, httpOptions) {
     };
 
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._get(options);
+    return pandaDocService._get(options);
 };
 
 exports.templates.get = function(httpOptions) {
     var url = parse('/templates');
     sys.logs.debug('[pandadoc] GET from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._get(options);
+    return pandaDocService._get(options);
 };
 
 exports.templates.details.get = function(templateId, httpOptions) {
@@ -147,46 +160,50 @@ exports.templates.details.get = function(templateId, httpOptions) {
     var url = parse('/templates/:templateId/details', [templateId]);
     sys.logs.debug('[pandadoc] GET from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._get(options);
+    return pandaDocService._get(options);
 };
 
 ////////////////////////////////////
 // Public API - Generic Functions //
 ////////////////////////////////////
 
+exports.getConfigurations = function (property) {
+    return config.get(property);
+};
+
 exports.get = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._get(options, callbackData, callbacks);
+    return httpService.get(options, callbackData, callbacks);
 };
 
 exports.post = function(url, httpOptions, callbackData, callbacks) {
     options = checkHttpOptions(url, httpOptions);
-    return endpoint._post(options, callbackData, callbacks);
+    return httpService.post(options, callbackData, callbacks);
 };
 
 exports.put = function(url, httpOptions, callbackData, callbacks) {
     options = checkHttpOptions(url, httpOptions);
-    return endpoint._put(options, callbackData, callbacks);
+    return httpService.put(options, callbackData, callbacks);
 };
 
 exports.patch = function(url, httpOptions, callbackData, callbacks) {
     options = checkHttpOptions(url, httpOptions);
-    return endpoint._patch(options, callbackData, callbacks);
+    return httpService.patch(options, callbackData, callbacks);
 };
 
 exports.delete = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._delete(options, callbackData, callbacks);
+    return httpService.delete(options, callbackData, callbacks);
 };
 
 exports.head = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._head(options, callbackData, callbacks);
+    return httpService.head(options, callbackData, callbacks);
 };
 
 exports.options = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
-    return endpoint._options(options, callbackData, callbacks);
+    return httpService.options(options, callbackData, callbacks);
 };
 
 exports.utils = {};

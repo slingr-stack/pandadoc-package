@@ -1,7 +1,18 @@
 {
 	"label": "PandaDoc Package",
 	"name": "pandadoc",
-	"dependencies": [],
+	"dependencies": [
+		{
+			"name": "http",
+			"type": "service",
+			"version": "v1.1.3"
+		},
+		{
+			"name": "pandadoc",
+			"type": "service",
+			"version": "v0.0.1"
+		}
+	],
 	"configuration": [
 		{
 			"name": "apiKey",
@@ -13,6 +24,11 @@
 	],
 	"events": [],
 	"metadata": [
+		{
+			"type": "script",
+			"namespace": "api",
+			"path": "/scripts/api.js"
+		},
 		{
 			"type": "script",
 			"namespace": "api",
