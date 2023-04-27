@@ -1,0 +1,41 @@
+{
+	"label": "PandaDoc Package",
+	"name": "pandadoc",
+	"dependencies": [],
+	"configuration": [
+		{
+			"name": "apiKey",
+			"label": "API Key",
+			"type": "text",
+			"required": "true",
+			"visibility": "true"
+		}
+	],
+	"events": [],
+	"metadata": [
+		{
+			"type": "script",
+			"namespace": "api",
+			"path": "/scripts/functions.js",
+			"functions": [
+				"documents.get",
+				"documents.post",
+				"documents.details.get",
+				"documents.send.post",
+				"documents.session.post",
+				"documents.download.get",
+				"templates.get",
+				"details.get",
+				"get",
+				"post",
+				"put",
+				"patch",
+				"delete",
+				"head",
+				"options",
+				"utils.parseTimestamp",
+				"utils.formatTimestamp"
+			]
+		}
+	]
+}
