@@ -18,8 +18,8 @@
 			"namespace": "api",
 			"path": "/scripts/functions.js",
 			"functions": [
+				"documents",
 				"documents.get",
-				"documents.post",
 				"documents.details.get",
 				"documents.send.post",
 				"documents.session.post",
