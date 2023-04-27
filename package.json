@@ -1,4 +1,4 @@
-{
+ {
 	"label": "PandaDoc Package",
 	"name": "pandadoc",
 	"dependencies": [
@@ -50,7 +50,8 @@
 				"head",
 				"options",
 				"utils.parseTimestamp",
-				"utils.formatTimestamp"
+				"utils.formatTimestamp",
+				"getConfigurations"
 			]
 		}
 	]
