@@ -26,12 +26,10 @@
 	"metadata": [
 		{
 			"type": "script",
-			"namespace": "api",
 			"path": "/scripts/api.js"
 		},
 		{
 			"type": "script",
-			"namespace": "api",
 			"path": "/scripts/functions.js",
 			"functions": [
 				"documents.get",
