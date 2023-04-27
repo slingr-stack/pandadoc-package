@@ -15,10 +15,6 @@
 	"metadata": [
 		{
 			"type": "script",
-			"path": "/scripts/api.js"
-		},
-		{
-			"type": "script",
 			"path": "/scripts/functions.js",
 			"functions": [
 				"documents.get",
