@@ -4,10 +4,10 @@ var httpService = svc.http;
 //var pandaDocService = svc.pandadoc;
 var pandaDocService = {
     _get: function(options) {
-        return httpService._get(api.setRequest(options));
+        return httpService._get(api.PandaDoc(options));
     },
     _post: function(options) {
-        return httpService._post(api.setRequest(options));
+        return httpService._post(api.PandaDoc(options));
     }
 }
 
@@ -240,22 +240,6 @@ exports.utils.formatTimestamp = function(date) {
 ///////////////////////
 //  Private helpers  //
 ///////////////////////
-
-var mergeJSON = function (json1, json2) {
-    const result = {};
-    var key;
-    for (key in json1) {
-        if(json1.hasOwnProperty(key)) result[key] = json1[key];
-    }
-    for (key in json2) {
-        if(json2.hasOwnProperty(key)) result[key] = json2[key];
-    }
-    return result;
-}
-
-var concatQuery = function (url, key, value) {
-    return url + ((!url || url.indexOf('?') < 0) ? '?' : '&') + key + "=" + value;
-};
 
 var checkHttpOptions = function (url, options) {
     options = options || {};
