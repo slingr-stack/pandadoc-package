@@ -134,11 +134,11 @@ exports.documents.download.get = function(documentId, httpOptions) {
     var url = parse('/documents/:documentId/download', [documentId]);
     sys.logs.debug('[pandadoc] GET from: ' + url);
 
-    var httpOptions = {
+    httpOptions = {
         path:url,
         forceDownload: true,
         downloadSync: true,
-        fileName: fileName || 'document.pdf'
+        fileName: 'document.pdf'
     };
 
     var options = checkHttpOptions(url, httpOptions);

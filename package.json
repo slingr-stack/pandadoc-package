@@ -1,18 +1,7 @@
- {
+{
 	"label": "PandaDoc Package",
 	"name": "pandadoc",
-	"dependencies": [
-		{
-			"name": "http",
-			"type": "service",
-			"version": "v1.1.3"
-		},
-		{
-			"name": "pandadoc",
-			"type": "service",
-			"version": "v0.0.1"
-		}
-	],
+	"dependencies": [],
 	"configuration": [
 		{
 			"name": "apiKey",
