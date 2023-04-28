@@ -4,11 +4,73 @@
 	"dependencies": [],
 	"configuration": [
 		{
+			"name": "authenticationMethod",
+			"label": "Authentication Method",
+			"required": true,
+			"defaultValue": "oAuth2",
+			"type": "buttonsGroup",
+			"typeOptions": {
+				"allowCustom": false,
+				"possibleValues":[
+					{
+						"label":"API Key",
+						"name":"apiKey"
+					},
+					{
+						"label":"OAuth 2.0",
+						"name":"oAuth2"
+					}
+				]
+			}
+		},
+		{
 			"name": "apiKey",
 			"label": "API Key",
 			"type": "text",
-			"required": "true",
-			"visibility": "true"
+			"required": "config.authenticationMethod == 'apiKey'",
+			"visibility": "config.authenticationMethod == 'apiKey'"
+		},
+		{
+			"name": "clientId",
+			"label": "Client ID",
+			"type": "text",
+			"required": "config.authenticationMethod == 'oAuth2'",
+			"visibility": "config.authenticationMethod == 'oAuth2'"
+		},
+		{
+			"name": "clientSecret",
+			"label": "Client secret",
+			"type": "text",
+			"required": "config.authenticationMethod == 'oAuth2'",
+			"visibility": "config.authenticationMethod == 'oAuth2'"
+		},
+		{
+			"name": "requestToken",
+			"label": "Request token",
+			"type": "oauth2",
+			"visibility": "config.authenticationMethod == 'oAuth2'",
+			"typeOptions": {
+				"clientId": "config.clientId",
+				"clientSecret": "config.clientSecret",
+				"authUrl": "'https://app.pandadoc.com/oauth2/authorize'",
+				"accessTokenUrl": "'https://api.pandadoc.com/oauth2/access_token'",
+				"scope": "'read+write'",
+				"grantType": "'authorization_code'",
+				"accessToken": "@config.accessToken",
+				"refreshToken": "@config.refreshToken"
+			}
+		},
+		{
+			"name": "accessToken",
+			"label": "Access token",
+			"type": "text",
+			"visibility": "config.authenticationMethod == 'oAuth2'"
+		},
+		{
+			"name": "refreshToken",
+			"label": "Refresh token",
+			"type": "text",
+			"visibility": "config.authenticationMethod == 'oAuth2'"
 		}
 	],
 	"events": [],
