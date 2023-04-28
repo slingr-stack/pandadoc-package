@@ -38,6 +38,11 @@ var httpService = svc.http;
 
 //TODO helpers/functions a N niveles de objeto
 
+exports.test = function() {
+    sys.logs.warn(PandaDoc().toString());
+
+}
+
 exports.documents = {};
 
 exports.documents.details = {};

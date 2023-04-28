@@ -19,6 +19,11 @@
 			"path": "/scripts/functions.js"
 		},
 		{
+			"type": "script",
+			"namespace": "helpers",
+			"path": "/scripts/api.js"
+		},
+		{
 			"type": "flowStep",
 			"namespace": "steps",
 			"path": "/flowSteps/apiCallPandadoc"
