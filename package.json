@@ -15,28 +15,33 @@
 	"metadata": [
 		{
 			"type": "script",
-			"namespace": "api",
-			"path": "/scripts/functions.js",
-			"functions": [
-				"documents",
-				"documents.get",
-				"documents.details.get",
-				"documents.send.post",
-				"documents.session.post",
-				"documents.download.get",
-				"templates.get",
-				"details.get",
-				"get",
-				"post",
-				"put",
-				"patch",
-				"delete",
-				"head",
-				"options",
-				"utils.parseTimestamp",
-				"utils.formatTimestamp",
-				"getConfigurations"
-			]
+			"namespace": "helpers",
+			"path": "/scripts/functions.js"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/apiCallPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/createDocumentFromPdfPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/downloadDocumentPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/listDocumentsPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/sendDocumentPandadoc"
 		}
 	]
 }

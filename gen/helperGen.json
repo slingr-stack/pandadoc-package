@@ -1,0 +1,66 @@
+{
+  "fileName": "functions",
+  "endpointName": "pandadoc",
+  "apiDescriptors": [
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "GET",
+      "url": "/documents"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "POST",
+      "url": "/documents"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "POST",
+      "url": "/documents/:fileId"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "GET",
+      "url": "/documents/:documentId"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "GET",
+      "url": "/documents/:documentId/details"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "POST",
+      "url": "/documents/:documentId/send"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "POST",
+      "url": "/documents/:documentId/session"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "GET",
+      "url": "/documents/:documentId/download"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "GET",
+      "url": "/templates"
+    },
+    {
+      "prefix": "",
+      "suffix": "",
+      "method": "GET",
+      "url": "/templates/:templateId/details"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "label": "Create document from pdf to pandadoc",
+  "name": "createDocumentFromPdfPandadoc",
+  "category": "integrations",
+  "description": "Create a pandadoc document from a pdf file",
+  "inputs": [
+    {
+      "label": "File Id",
+      "name": "fileId",
+      "description": "The id provided by record",
+      "type": "text",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "File Name",
+      "name": "fileName",
+      "description": "The name with which the file is created in Pandadoc",
+      "type": "text",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Recipients",
+      "name": "recipients",
+      "description": "Add a recipient to view or sign your document",
+      "type": "text",
+      "multiplicity": "many",
+      "options": {
+        "validation": "email",
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Fields",
+      "name": "fields",
+      "description": "You may pass a list of fields/values to pre-fill fields used in a template.",
+      "type": "keyValue"
+    }
+  ],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}

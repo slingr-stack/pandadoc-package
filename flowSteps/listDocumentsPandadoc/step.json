@@ -1,0 +1,15 @@
+{
+  "label": "List documents to pandadoc",
+  "name": "listDocumentsPandadoc",
+  "category": "integrations",
+  "description": "List all documents on your pandadoc account",
+  "inputs": [],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}

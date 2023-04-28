@@ -1,13 +1,18 @@
-var PANDADOC_API_BASE_URL = "https://api.pandadoc.com";
-var PANDADOC_API_URL = PANDADOC_API_BASE_URL+"/public/v1";
 
-function PandaDoc (options) {
+//TODO se puede hacer el require,
+// se necesita???
+// o es mejor configurar la dependencia?
+
+function PandaDoc(options) {
     options= setApiUri(options);
     options= setRequestHeaders(options);
     return options;
 }
 
 function setApiUri(options) {
+    var PANDADOC_API_BASE_URL = "https://api.pandadoc.com";
+    var PANDADOC_API_URL = PANDADOC_API_BASE_URL+"/public/v1";
+
     var url = options.url || {};
     options.url = PANDADOC_API_URL + url;
     return options;
@@ -28,29 +33,11 @@ function setRequestHeaders(options) {
     return options;
 }
 
-var mergeJSON = function (json1, json2) {
-    const result = {};
-    var key;
-    for (key in json1) {
-        if(json1.hasOwnProperty(key)) result[key] = json1[key];
-    }
-    for (key in json2) {
-        if(json2.hasOwnProperty(key)) result[key] = json2[key];
-    }
-    return result;
-}
 
-
+//var httpService = dependencies.http;
 var httpService = svc.http;
-//var pandaDocService = svc.pandadoc;
-var pandaDocService = {
-    _get: function(options) {
-        return httpService._get(PandaDoc(options));
-    },
-    _post: function(options) {
-        return httpService._post(PandaDoc(options));
-    }
-}
+
+//TODO helpers/functions a N niveles de objeto
 
 exports.documents = {};
 
@@ -89,7 +76,7 @@ exports.documents.get = function(documentId, httpOptions) {
     }
     sys.logs.debug('[pandadoc] GET from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return pandaDocService._get(options);
+    return httpService.get(PandaDoc(options));
 };
 
 exports.documents.post = function(fileId, httpOptions) {
@@ -106,7 +93,7 @@ exports.documents.post = function(fileId, httpOptions) {
             url = parse('/documents');
             break;
         case 2:
-            return pandaDocService.post({
+            return httpService.post({
                 path: '/documents',
                 multipart: true,
                 parts: [
@@ -129,7 +116,7 @@ exports.documents.post = function(fileId, httpOptions) {
     }
     sys.logs.debug('[pandadoc] POST from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return pandaDocService._post(options);
+    return httpService.post(PandaDoc(options));
 };
 
 exports.documents.details.get = function(documentId, httpOptions) {
@@ -140,7 +127,7 @@ exports.documents.details.get = function(documentId, httpOptions) {
     var url = parse('/documents/:documentId/details', [documentId]);
     sys.logs.debug('[pandadoc] GET from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return pandaDocService._get(options);
+    return httpService.get(PandaDoc(options));
 };
 
 exports.documents.send.post = function(documentId, httpOptions) {
@@ -151,7 +138,7 @@ exports.documents.send.post = function(documentId, httpOptions) {
     var url = parse('/documents/:documentId/send', [documentId]);
     sys.logs.debug('[pandadoc] POST from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return pandaDocService._post(options);
+    return httpService.post(PandaDoc(options));
 };
 
 exports.documents.session.post = function(documentId, httpOptions) {
@@ -162,7 +149,7 @@ exports.documents.session.post = function(documentId, httpOptions) {
     var url = parse('/documents/:documentId/session', [documentId]);
     sys.logs.debug('[pandadoc] POST from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    var res = pandaDocService._post(options);
+    var res = httpService.post(PandaDoc(options));
     res.link = 'https://app.pandadoc.com/s/'+res.id;
     return res;
 };
@@ -183,14 +170,14 @@ exports.documents.download.get = function(documentId, httpOptions) {
     };
 
     var options = checkHttpOptions(url, httpOptions);
-    return pandaDocService._get(options);
+    return httpService.get(PandaDoc(options));
 };
 
 exports.templates.get = function(httpOptions) {
     var url = parse('/templates');
     sys.logs.debug('[pandadoc] GET from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return pandaDocService._get(options);
+    return httpService.get(PandaDoc(options));
 };
 
 exports.templates.details.get = function(templateId, httpOptions) {
@@ -201,13 +188,14 @@ exports.templates.details.get = function(templateId, httpOptions) {
     var url = parse('/templates/:templateId/details', [templateId]);
     sys.logs.debug('[pandadoc] GET from: ' + url);
     var options = checkHttpOptions(url, httpOptions);
-    return pandaDocService._get(options);
+    return httpService.get(PandaDoc(options));
 };
 
 ////////////////////////////////////
 // Public API - Generic Functions //
 ////////////////////////////////////
 
+//TODO esto funciona así?
 exports.getConfigurations = function (property) {
     return config.get(property);
 };
@@ -281,6 +269,18 @@ exports.utils.formatTimestamp = function(date) {
 ///////////////////////
 //  Private helpers  //
 ///////////////////////
+
+var mergeJSON = function (json1, json2) {
+    const result = {};
+    var key;
+    for (key in json1) {
+        if(json1.hasOwnProperty(key)) result[key] = json1[key];
+    }
+    for (key in json2) {
+        if(json2.hasOwnProperty(key)) result[key] = json2[key];
+    }
+    return result;
+}
 
 var checkHttpOptions = function (url, options) {
     options = options || {};
