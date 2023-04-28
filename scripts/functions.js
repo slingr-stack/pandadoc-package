@@ -172,37 +172,37 @@ exports.templates.details.get = function(templateId, httpOptions) {
 
 exports.get = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
-    return httpService.get(options, callbackData, callbacks);
+    return httpService.get(PandaDoc(options), callbackData, callbacks);
 };
 
 exports.post = function(url, httpOptions, callbackData, callbacks) {
     options = checkHttpOptions(url, httpOptions);
-    return httpService.post(options, callbackData, callbacks);
+    return httpService.post(PandaDoc(options), callbackData, callbacks);
 };
 
 exports.put = function(url, httpOptions, callbackData, callbacks) {
     options = checkHttpOptions(url, httpOptions);
-    return httpService.put(options, callbackData, callbacks);
+    return httpService.put(PandaDoc(options), callbackData, callbacks);
 };
 
 exports.patch = function(url, httpOptions, callbackData, callbacks) {
     options = checkHttpOptions(url, httpOptions);
-    return httpService.patch(options, callbackData, callbacks);
+    return httpService.patch(PandaDoc(options), callbackData, callbacks);
 };
 
 exports.delete = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
-    return httpService.delete(options, callbackData, callbacks);
+    return httpService.delete(PandaDoc(options), callbackData, callbacks);
 };
 
 exports.head = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
-    return httpService.head(options, callbackData, callbacks);
+    return httpService.head(PandaDoc(options), callbackData, callbacks);
 };
 
 exports.options = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
-    return httpService.options(options, callbackData, callbacks);
+    return httpService.options(PandaDoc(options), callbackData, callbacks);
 };
 
 exports.utils = {};
