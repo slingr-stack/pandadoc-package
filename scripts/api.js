@@ -4,12 +4,15 @@
     var PANDADOC_API_URL = PANDADOC_API_BASE_URL+"/public/v1";
 
     function PandaDoc (options) {
+        sys.logs.error("PandaDoc API is not initialized");
+        options = options || {};
         options= setApiUri(options);
         options= setRequestHeaders(options);
         return options;
     }
 
     function setApiUri(options) {
+        sys.logs.error("PandaDoc API is not initialized");
         var url = options.url || {};
         options.url = PANDADOC_API_URL + url;
         return options;
@@ -42,5 +45,5 @@
         return result;
     }
 
-    return PandaDoc;
+    return  PandaDoc;
 })();
