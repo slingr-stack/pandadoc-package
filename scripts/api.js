@@ -45,5 +45,5 @@
         return result;
     }
 
-    return  PandaDoc;
+    return {PandaDoc: PandaDoc};
 })();
