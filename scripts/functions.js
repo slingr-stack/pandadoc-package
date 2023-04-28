@@ -1,8 +1,6 @@
+var PandaDoc = pkg.pandadoc.api;
 
-//TODO se puede hacer el require,
-// se necesita???
-// o es mejor configurar la dependencia?
-
+/*
 function PandaDoc(options) {
     options= setApiUri(options);
     options= setRequestHeaders(options);
@@ -32,6 +30,7 @@ function setRequestHeaders(options) {
     options.headers = headers;
     return options;
 }
+*/
 
 
 //var httpService = dependencies.http;

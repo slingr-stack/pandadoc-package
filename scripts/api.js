@@ -42,44 +42,5 @@
         return result;
     }
 
-    if (typeof exports !== 'undefined') {
-        if (typeof module !== 'undefined' && module.exports) {
-            exports = module.exports = PandaDoc;
-        }
-        exports.PandaDoc = PandaDoc;
-    }
+    return PandaDoc;
 })();
-
-/*
-for(var a in pkg.pandadoc.functions){
-  log(a)
-}
-//*/
-/*
-for(var a in pkg.pandadoc.functions.documents){
-  log(a)
-}
-//*/
-/*
-for(var a in pkg.testdep.test){
-  log(a)
-}
-for(var a in pkg.testdep.test2){
-  log(a)
-}
-//*/
-/*
-for(var a in pkg.randomDataGenerator){
-  log(a)
-}
-*/
-/*
-for(var a in pkg.randomDataGenerator.generator){
-  log(a)
-}
-//*/
-
-//log(JSON.stringify(pkg.testdep.test2.aPlusB("a","b")))
-
-//log(JSON.stringify(pkg.pandadoc.functions.get))
-log(JSON.stringify(pkg.pandadoc.functions))
