@@ -21,20 +21,24 @@ exports.PandaDoc = function (options) {
  ****************************************************/
 
 function setApiUri(options) {
-    var url = options.url || {};
+    var url = options.path || "";
     options.url = PANDADOC_API_URL + url;
+    sys.logs.debug('[pandadoc] Set url: ' + options.path + "->" + options.url);
     return options;
 }
 
 function setRequestHeaders(options) {
     var headers = options.headers || {};
     if (config.get("authenticationMethod") === "apiKey") {
+        sys.logs.debug('[pandadoc] Set header apikey');
         headers = mergeJSON(headers, {"Authorization": "API-Key " + config.get("apiKey")});
     } else {
+        sys.logs.debug('[pandadoc] Set header Bearer');
         headers = mergeJSON(headers, {"Authorization": "Bearer " + config.get("accessToken")});
     }
     headers = mergeJSON(headers, {"Content-Type": "application/json"});
     if (headers.Accept === undefined) {
+        sys.logs.debug('[pandadoc] Set header accept');
         headers = mergeJSON(headers, "Accept", "application/json");
     }
     options.headers = headers;
