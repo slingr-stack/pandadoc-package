@@ -1,47 +1,18 @@
-var PandaDoc = pkg.pandadoc.api;
+/****************************************************
+ Imports
+ ****************************************************/
 
-/*
-function PandaDoc(options) {
-    options= setApiUri(options);
-    options= setRequestHeaders(options);
-    return options;
-}
+var PandaDoc = pkg.pandadoc.api.PandaDoc;
 
-function setApiUri(options) {
-    var PANDADOC_API_BASE_URL = "https://api.pandadoc.com";
-    var PANDADOC_API_URL = PANDADOC_API_BASE_URL+"/public/v1";
+/****************************************************
+ Dependencies
+ ****************************************************/
 
-    var url = options.url || {};
-    options.url = PANDADOC_API_URL + url;
-    return options;
-}
-
-function setRequestHeaders(options) {
-    var headers = options.headers || {};
-    if (config.get("authenticationMethod") === "apiKey") {
-        headers = mergeJSON(headers, {"Authorization": "API-Key " + config.get("apiKey")});
-    } else {
-        headers = mergeJSON(headers, {"Authorization": "Bearer " + config.get("accessToken")});
-    }
-    headers = mergeJSON(headers, {"Content-Type": "application/json"});
-    if (headers.Accept === undefined) {
-        headers = mergeJSON(headers, "Accept", "application/json");
-    }
-    options.headers = headers;
-    return options;
-}
-*/
-
-
-//var httpService = dependencies.http;
 var httpService = svc.http;
 
-//TODO helpers/functions a N niveles de objeto
-
-exports.test = function() {
-    sys.logs.warn(PandaDoc().toString());
-
-}
+/****************************************************
+ Helpers
+ ****************************************************/
 
 exports.documents = {};
 
@@ -195,14 +166,9 @@ exports.templates.details.get = function(templateId, httpOptions) {
     return httpService.get(PandaDoc(options));
 };
 
-////////////////////////////////////
-// Public API - Generic Functions //
-////////////////////////////////////
-
-//TODO esto funciona así?
-exports.getConfigurations = function (property) {
-    return config.get(property);
-};
+/****************************************************
+ Public API - Generic Functions
+ ****************************************************/
 
 exports.get = function(url, httpOptions, callbackData, callbacks) {
     var options = checkHttpOptions(url, httpOptions);
@@ -241,6 +207,10 @@ exports.options = function(url, httpOptions, callbackData, callbacks) {
 
 exports.utils = {};
 
+exports.utils.getConfiguration = function (property) {
+    return config.get(property);
+};
+
 exports.utils.parseTimestamp = function(dateString) {
     if (!dateString) {
         return null;
@@ -270,21 +240,9 @@ exports.utils.formatTimestamp = function(date) {
         + 'Z';
 };
 
-///////////////////////
-//  Private helpers  //
-///////////////////////
-
-var mergeJSON = function (json1, json2) {
-    const result = {};
-    var key;
-    for (key in json1) {
-        if(json1.hasOwnProperty(key)) result[key] = json1[key];
-    }
-    for (key in json2) {
-        if(json2.hasOwnProperty(key)) result[key] = json2[key];
-    }
-    return result;
-}
+/****************************************************
+ Private helpers
+ ****************************************************/
 
 var checkHttpOptions = function (url, options) {
     options = options || {};

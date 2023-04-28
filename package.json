@@ -15,7 +15,7 @@
 	"metadata": [
 		{
 			"type": "script",
-			"namespace": "helpers",
+			"namespace": "api",
 			"path": "/scripts/functions.js"
 		},
 		{
