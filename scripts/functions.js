@@ -323,7 +323,13 @@ function setApiUri(options) {
 
 function setRequestHeaders(options) {
     var headers = options.headers || {};
-    headers = mergeJSON(headers, {"Authorization": "API-Key " + config.get("apiKey")});
+    if (config.get("authenticationMethod") === "apiKey") {
+        sys.logs.debug('[pandadoc] Set header apikey');
+        headers = mergeJSON(headers, {"Authorization": "API-Key " + config.get("apiKey")});
+    } else {
+        sys.logs.debug('[pandadoc] Set header Bearer');
+        headers = mergeJSON(headers, {"Authorization": "Bearer " + config.get("accessToken")});
+    }
     headers = mergeJSON(headers, {"Content-Type": "application/json"});
     if (headers.Accept === undefined) {
         sys.logs.debug('[pandadoc] Set header accept');
