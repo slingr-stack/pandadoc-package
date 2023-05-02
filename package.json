@@ -93,13 +93,13 @@
 		},
 		{
 			"type": "script",
-			"namespace": "helpers",
+			"namespace": "api",
 			"path": "/scripts/api.js"
 		},
 		{
 			"type": "listener",
-			"namespace": "webhooks",
-			"path": "/scripts/listeners.js"
+			"namespace": "webhook",
+			"path": "/listeners/listeners.js"
 		},
 		{
 			"type": "flowStep",
@@ -125,11 +125,6 @@
 			"type": "flowStep",
 			"namespace": "steps",
 			"path": "/flowSteps/sendDocumentPandadoc"
-		},
-		{
-			"type": "listener",
-			"namespace": "defaultWebhook",
-			"path": "/listeners/listeners.js"
 		}
 	]
 }
