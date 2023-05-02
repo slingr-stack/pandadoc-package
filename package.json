@@ -9,12 +9,53 @@
 			"type": "text"
 		}
 	],
-	"events": [],
+	"events": [
+		{
+			"label": "Webhook",
+			"name": "webhook",
+			"description": "Event triggered when there is a webhook coming from PandaDoc."
+		},
+		{
+			"label": "Callback",
+			"name": "callback",
+			"description": "Happens when a async process is finished"
+		}
+	],
 	"metadata": [
 		{
 			"type": "script",
-			"namespace": "helpers",
+			"namespace": "api",
 			"path": "/scripts/functions.js"
+		},
+		{
+			"type": "listener",
+			"namespace": "webhook",
+			"path": "/listeners/listeners.js"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/apiCallPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/createDocumentFromPdfPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/downloadDocumentPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/listDocumentsPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/sendDocumentPandadoc"
 		}
 	]
 }
