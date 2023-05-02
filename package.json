@@ -6,9 +6,7 @@
 		{
 			"name": "apiKey",
 			"label": "API Key",
-			"type": "text",
-			"required": "config.authenticationMethod == 'apiKey'",
-			"visibility": "config.authenticationMethod == 'apiKey'"
+			"type": "text"
 		}
 	],
 	"events": [],
