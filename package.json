@@ -16,7 +16,7 @@
 		{
 			"type": "script",
 			"namespace": "helpers",
-			"path": "/scripts/api.js"
+			"path": "/scripts/functions.js"
 		}
 	]
 }
