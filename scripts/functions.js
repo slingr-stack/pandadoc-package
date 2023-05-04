@@ -241,6 +241,10 @@ exports.utils.formatTimestamp = function(date) {
         + 'Z';
 };
 
+exports.utils.verifySignature = function (payload, signature) {
+    var secret = config.get('webhookSecret');
+    return sys.utils.crypto.verifySignaturWithHmac(payload, signature, secret, "HmacSHA256");
+}
 /****************************************************
  Private helpers
  ****************************************************/
