@@ -71,6 +71,11 @@
 			"label": "Refresh token",
 			"type": "text",
 			"visibility": "config.authenticationMethod == 'oAuth2'"
+		},
+		{
+			"name": "webhookShared",
+			"label": "webhookShared",
+			"type": "text"
 		}
 	],
 	"events": [
