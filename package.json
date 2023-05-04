@@ -73,9 +73,16 @@
 			"visibility": "config.authenticationMethod == 'oAuth2'"
 		},
 		{
-			"name": "webhookShared",
-			"label": "webhookShared",
-			"type": "text"
+			"name": "webhooksSharedKey",
+			"label": "Webhooks shared key",
+			"type": "text",
+			"required": false
+		},
+		{
+			"name": "webhook",
+			"label": "Webhook URL",
+			"type": "label",
+			"value": "config.WEBHOOK_URL"
 		}
 	],
 	"events": [
@@ -93,13 +100,8 @@
 	"metadata": [
 		{
 			"type": "script",
-			"namespace": "api",
+			"namespace": "functions",
 			"path": "/scripts/functions.js"
-		},
-		{
-			"type": "script",
-			"namespace": "api",
-			"path": "/scripts/api.js"
 		},
 		{
 			"type": "listener",
