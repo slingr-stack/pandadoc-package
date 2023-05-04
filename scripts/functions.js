@@ -237,7 +237,7 @@ exports.utils.formatTimestamp = function(date) {
 
 exports.utils.verifySignature = function (payload, signature) {
     var secret = config.get('webhooksSharedKey');
-    return sys.utils.crypto.verifySignaturWithHmac(payload, signature, secret, "HmacSHA256");
+    return sys.utils.crypto.verifySignatureWithHmac(payload, signature, secret, "HmacSHA256");
 };
 
 /****************************************************
