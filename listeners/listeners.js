@@ -17,11 +17,10 @@ listeners.defaultWebhook = {
         var body = JSON.stringify(event.data.body);
         var signature = event.data.parameters.signature || "";
 
-        var secret = config.get("webhooksSharedKey");
-        if (!secret || secret === "" || !sys.utils.crypto.verifySignatureWithHmac(body, signature, secret, "HmacSHA256")) {
-            throw new Error("Invalid signature or body");
+        if (pkg.pandadoc.functions.verifySignature(body, signature)) {
+            sys.events.triggerEvent('pandadoc:webhook', body);
+            return "ok";
         }
-        sys.events.triggerEvent('pandadoc:webhook', body);
-        return "ok";
+        else throw new Error("Invalid webhook");
     }
 };

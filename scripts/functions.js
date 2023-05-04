@@ -235,6 +235,15 @@ exports.utils.formatTimestamp = function(date) {
         + 'Z';
 };
 
+exports.utils.verifySignature = function (body, signature) {
+    var secret = config.get("webhooksSharedKey");
+    if (!secret || secret === "" || !sys.utils.crypto.verifySignatureWithHmac(body, signature, secret, "HmacSHA256")) {
+        sys.logs.error("Invalid signature or body");
+        return false;
+    }
+    return true;
+};
+
 /****************************************************
  Private helpers
  ****************************************************/
