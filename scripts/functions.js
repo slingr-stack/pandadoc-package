@@ -1,10 +1,4 @@
 /****************************************************
- Imports
- ****************************************************/
-
-//var PandaDoc = pkg.pandadoc.api.PandaDoc;
-
-/****************************************************
  Dependencies
  ****************************************************/
 
@@ -244,7 +238,8 @@ exports.utils.formatTimestamp = function(date) {
 exports.utils.verifySignature = function (payload, signature) {
     var secret = config.get('webhooksSharedKey');
     return sys.utils.crypto.verifySignaturWithHmac(payload, signature, secret, "HmacSHA256");
-}
+};
+
 /****************************************************
  Private helpers
  ****************************************************/
@@ -305,7 +300,7 @@ var PANDADOC_API_BASE_URL = "https://api.pandadoc.com";
 var PANDADOC_API_URL = PANDADOC_API_BASE_URL+"/public/v1";
 
 /****************************************************
- Public API
+ Configurator
  ****************************************************/
 
 var PandaDoc = function (options) {

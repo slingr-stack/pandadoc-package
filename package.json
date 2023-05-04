@@ -100,7 +100,7 @@
 	"metadata": [
 		{
 			"type": "script",
-			"namespace": "functions",
+			"namespace": "api",
 			"path": "/scripts/functions.js"
 		},
 		{
