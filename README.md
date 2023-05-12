@@ -1,10 +1,19 @@
----
-title: PandaDoc package
-keywords: 
-last_updated: April 28, 2023
-tags: []
-summary: "Detailed description of the API of the PandaDoc package."
----
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Last Updated</th>
+        <th>Summary</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>PandaDoc package</td>
+        <td>April 28, 2023</td>
+        <td>Detailed description of the API of the PandaDoc package.</td>
+    </tr>
+    </tbody>
+</table>
 
 ## Overview
 
