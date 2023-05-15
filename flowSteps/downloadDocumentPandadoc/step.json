@@ -1,0 +1,34 @@
+{
+  "label": "Download document to pandadoc",
+  "name": "downloadDocumentPandadoc",
+  "category": "integrations",
+  "description": "Download a pandadoc document",
+  "inputs": [
+    {
+      "label": "File Id",
+      "name": "fileId",
+      "description": "The id provided by Pandadoc service.",
+      "type": "text",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "File Name",
+      "name": "fileName",
+      "description": "If provided, the file will be stored with this name.",
+      "type": "text",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}

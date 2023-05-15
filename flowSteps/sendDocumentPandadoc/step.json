@@ -1,0 +1,54 @@
+{
+  "label": "Send documents to pandadoc",
+  "name": "sendDocumentPandadoc",
+  "category": "integrations",
+  "description": "Move a document to sent status and send an optional email.",
+  "inputs": [
+    {
+      "label": "File Id",
+      "name": "fileId",
+      "description": "The id provided by Pandadoc service.",
+      "type": "text",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Subject",
+      "name": "subject",
+      "description": "Value that will be used as the email subject.",
+      "type": "text",
+      "options": {
+        "validation": "email",
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Message",
+      "name": "message",
+      "description": "A message which will be sent by email with a link to a document to sign.",
+      "type": "text",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Silent",
+      "name": "silent",
+      "type": "boolean",
+      "description": "Disables sent, viewed, comment and completed email notifications for document recipients and the document sender. By default, notifications emails are sent for specific actions. If set as true, it won't affect \"Approve document\" email notification sent to the Approver.",
+      "defaultValue": false,
+      "options": {
+        "allowContextSelector": "false"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}
