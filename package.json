@@ -1,7 +1,14 @@
 {
 	"label": "PandaDoc Package",
 	"name": "pandadoc",
-	"dependencies": [],
+	"dependencies": [
+		{
+			"type": "service",
+			"name": "http",
+			"version": "v1.1.5",
+			"instanceId" : "shared"
+		}
+	],
 	"configuration": [
 		{
 			"name": "authenticationMethod",
