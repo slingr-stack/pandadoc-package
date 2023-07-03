@@ -2,7 +2,7 @@
  Listeners
  ****************************************************/
 
-listeners.defaultWebhook = {
+listeners.defaultWebhookPandadoc = {
     label: 'Catch HTTP pandadoc events',
     type: 'service',
     options: {

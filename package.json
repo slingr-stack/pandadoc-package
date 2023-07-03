@@ -6,7 +6,7 @@
 			"type": "service",
 			"name": "http",
 			"version": "v1.1.5",
-			"instanceId" : "shared"
+			"instanceId": "shared"
 		}
 	],
 	"configuration": [
@@ -18,14 +18,14 @@
 			"type": "buttonsGroup",
 			"typeOptions": {
 				"allowCustom": false,
-				"possibleValues":[
+				"possibleValues": [
 					{
-						"label":"API Key",
-						"name":"apiKey"
+						"label": "API Key",
+						"name": "apiKey"
 					},
 					{
-						"label":"OAuth 2.0",
-						"name":"oAuth2"
+						"label": "OAuth 2.0",
+						"name": "oAuth2"
 					}
 				]
 			}
