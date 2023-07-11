@@ -2,7 +2,37 @@
  Dependencies
  ****************************************************/
 
-var httpService = svc.http;
+var httpReference = dependencies.http;
+
+var httpDependency = {
+    get: httpReference.get,
+    post: httpReference.post,
+    put: httpReference.put,
+    patch: httpReference.patch,
+    delete: httpReference.delete,
+    head: httpReference.head,
+    options: httpReference.options
+};
+var httpService = {};
+
+function handleRequestWithRetry(requestFn, options, callbackData, callbacks) {
+    try {
+        return requestFn(options, callbackData, callbacks);
+    } catch (error) {
+        sys.logs.error(JSON.stringify(error));
+        sys.logs.info("[pandadoc] Handling request...");
+    }
+}
+
+function createWrapperFunction(requestFn) {
+    return function(options, callbackData, callbacks) {
+        return handleRequestWithRetry(requestFn, options, callbackData, callbacks);
+    };
+}
+
+for (var key in httpDependency) {
+    if (typeof httpDependency[key] === 'function') httpService[key] = createWrapperFunction(httpDependency[key]);
+}
 
 /****************************************************
  Helpers
@@ -201,11 +231,6 @@ exports.options = function(url, httpOptions, callbackData, callbacks) {
 
 exports.utils = {};
 
-exports.utils.getConfiguration = function (property) {
-    sys.logs.debug('[pandadoc] Get property: '+property);
-    return config.get(property);
-};
-
 exports.utils.parseTimestamp = function(dateString) {
     if (!dateString) {
         return null;
@@ -235,6 +260,11 @@ exports.utils.formatTimestamp = function(date) {
         + 'Z';
 };
 
+exports.utils.getConfiguration = function (property) {
+    sys.logs.debug('[pandadoc] Get property: '+property);
+    return config.get(property);
+};
+
 exports.utils.verifySignature = function (body, signature) {
     var secret = config.get("webhooksSharedKey");
     if (!secret || secret === "" || !sys.utils.crypto.verifySignatureWithHmac(body, signature, secret, "HmacSHA256")) {
@@ -256,7 +286,7 @@ var checkHttpOptions = function (url, options) {
             options = url || {};
         } else {
             if (!!options.path || !!options.params || !!options.body) {
-                // options contains the http package format
+                // options contain the http package format
                 options.path = url;
             } else {
                 // create html package

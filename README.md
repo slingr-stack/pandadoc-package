@@ -9,7 +9,7 @@
     <tbody>
     <tr>
         <td>PandaDoc package</td>
-        <td>April 28, 2023</td>
+        <td>July 11, 2023</td>
         <td>Detailed description of the API of the PandaDoc package.</td>
     </tr>
     </tbody>
@@ -89,11 +89,11 @@ log(JSON.stringify(res));
 
 ## Configuration
 
-Before configuring the package you will need to create an application in PandaDoc:
+Before configuring the package, you will need to create an application in PandaDoc:
 
 https://app.pandadoc.com/developers/
 
-Once you have your application you will be able to configure the package.
+Once you have your application, you will be able to configure the package.
 
 ### Client ID
 
@@ -105,12 +105,14 @@ The client secret of the PandaDoc application. This field needs to be entered be
 
 ### Access token
 
-In order to get this token you need to click on the button `Request token`. Once you complete the authorization process
+In order to get this token, you need to click on the button `Request token`.
+Once you complete the authorization process,
 this field will be set.
 
 ### Refresh token
 
-In order to get this token you need to click on the button `Request token`. Once you complete the authorization process
+In order to get this token, you need to click on the button `Request token`. 
+Once you complete the authorization process,
 this field will be set.
 
 ### API Key
@@ -121,34 +123,34 @@ This field is optional. If you put a key here, all requests to the API will be a
 
 This field is optional. If you put a key here, webhooks will be validated according to this key.
 
-At the moment this package was created shared keys was only available for the webhooks integrations in the main
+At the moment, this package was created shared keys was only available for the webhook integrations in the main
 PandaDoc application and wasn't available for webhooks defined in applications created by external developers. So if
-you don't want users to set up the webhooks integrations by themselves, you should leave this field empty and be
+you don't want users to set up the webhook integrations by themselves, you should leave this field empty and be
 aware that there won't be validations on incoming webhooks.
 
 ### Webhook URL
 
 This is the URL you should configure in the webhook of your PandaDoc application or users would need to configure
-in the webhooks integration.
+in the webhook integration.
 
 
 # Javascript API
 
-The Javascript API of the pandadoc package has three pieces:
+The Javascript API of the pandadoc endpoint has three pieces:
 
-- **HTTP requests**: These allow to make regular HTTP requests.
+- **HTTP requests**: These allow making regular HTTP requests.
 - **Shortcuts**: These are helpers to make HTTP request to the API in a more convenient way.
-- **Additional Helpers**: These helpers provide additional features that facilitate or improves the package usage in SLINGR.
+- **Additional Helpers**: These helpers provide additional features that facilitate or improve the endpoint usage in SLINGR.
 
 ## HTTP requests
 You can make `GET`,`POST` requests to the [pandadoc API](https://api.pandadoc.com) like this:
 ```javascript
-var response = pkg.pandadoc.functions.get('/templates')
-var response = pkg.pandadoc.functions.post('/documents/:fileId', body)
-var response = pkg.pandadoc.functions.post('/documents/:fileId')
+var response = pkg.pandadoc.functions.get('/documents/:documentId/download')
+var response = pkg.pandadoc.functions.post('/documents/:documentId/send', body)
+var response = pkg.pandadoc.functions.post('/documents/:documentId/send')
 ```
 
-Please take a look at the documentation of the [HTTP package](https://github.com/slingr-stack/http-service#javascript-api)
+Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service#javascript-api)
 for more information about generic requests.
 
 ## Shortcuts
@@ -224,7 +226,7 @@ pkg.pandadoc.functions.documents.session.post(documentId, body)
 
 ## Flow Step
 
-As an alternative option to using scripts, you can make use of Flows and Flow Steps specifically created for the package:
+As an alternative option to using scripts, you can make use of Flows and Flow Steps specifically created for the package
 <details>
     <summary>Click here to see the Flow Steps</summary>
 
@@ -350,7 +352,7 @@ Generic flow step for full use of the entire package and its services.
         <td>no</td>
         <td> 5000 </td>
         <td> overrideSettings </td>
-        <td>Connect timeout interval, in milliseconds (0 = infinity).</td>
+        <td>Connect a timeout interval, in milliseconds (0 = infinity).</td>
     </tr>
     <tr>
         <td>Read Timeout</td>
@@ -358,7 +360,7 @@ Generic flow step for full use of the entire package and its services.
         <td>no</td>
         <td> 60000 </td>
         <td> overrideSettings </td>
-        <td>Read timeout interval, in milliseconds (0 = infinity).</td>
+        <td>Read a timeout interval, in milliseconds (0 = infinity).</td>
     </tr>
     </tbody>
 </table>
@@ -387,7 +389,8 @@ Generic flow step for full use of the entire package and its services.
 
 </details>
 
-For more information about how shortcuts or flow steps works, and how they are generated, take a look at the [slingr-helpgen tool](https://github.com/slingr-stack/slingr-helpgen).
+For more information about how shortcuts or flow steps work, and how they are generated,
+take a look at the [slingr-helpgen tool](https://github.com/slingr-stack/slingr-helpgen).
 
 ## Additional Flow Step
 
@@ -559,7 +562,7 @@ List all documents on your pandadoc account.
 
 ### Send Document
 
-Move a document to sent status and send an optional email.
+Move a document to send status and send an optional email.
 
 <table>
     <thead>
@@ -610,7 +613,7 @@ Move a document to sent status and send an optional email.
         <td> false </td>
         <td>Always</td>
         <td>
-            Disables sent, viewed, comment and completed email notifications for document recipients and the document sender. By default, notifications emails are sent for specific actions. If set as true, it won't affect "Approve document" email notification sent to the Approver.
+            Disables sent, viewed, comment and completed email notifications for document recipients and the document sender. By default, notification emails are sent for specific actions. If set as true, it won't affect "Approve document" email notification sent to the Approver.
         </td>
     </tr>
     </tbody>
@@ -660,6 +663,9 @@ switch (event.data.event) {
         // ... do something
 }
 ```
+
+## Dependencies
+* HTTP Service (Latest Version)
 
 ## About SLINGR
 
