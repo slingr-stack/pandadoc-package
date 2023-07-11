@@ -19,8 +19,8 @@ function handleRequestWithRetry(requestFn, options, callbackData, callbacks) {
     try {
         return requestFn(options, callbackData, callbacks);
     } catch (error) {
+        sys.logs.info("[pandadoc] Handling error on request...");
         sys.logs.error(JSON.stringify(error));
-        sys.logs.info("[pandadoc] Handling request...");
     }
 }
 

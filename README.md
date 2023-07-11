@@ -33,7 +33,7 @@ Please make sure you take a look at the documentation from PandaDoc as features 
 Once you configured the package and authorized the package, you can list current documents with this call:
 
 ```js
-var docs = pkg.pandadoc.functions.documents.get(null, {count: 5});
+var docs = pkg.pandadoc.functions.documents.get({count: 5});
 log('docs: '+JSON.stringify(docs));
 ```
 
