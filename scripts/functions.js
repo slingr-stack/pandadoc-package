@@ -2,7 +2,7 @@
  Dependencies
  ****************************************************/
 
-var httpReference = svc.http;
+var httpReference = dependencies.http;
 
 var httpDependency = {
     get: httpReference.get,
