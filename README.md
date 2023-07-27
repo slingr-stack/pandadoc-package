@@ -9,7 +9,7 @@
     <tbody>
     <tr>
         <td>PandaDoc package</td>
-        <td>July 11, 2023</td>
+        <td>July 27, 2023</td>
         <td>Detailed description of the API of the PandaDoc package.</td>
     </tr>
     </tbody>
@@ -136,11 +136,11 @@ in the webhook integration.
 
 # Javascript API
 
-The Javascript API of the pandadoc endpoint has three pieces:
+The Javascript API of the pandadoc package has three pieces:
 
 - **HTTP requests**: These allow making regular HTTP requests.
 - **Shortcuts**: These are helpers to make HTTP request to the API in a more convenient way.
-- **Additional Helpers**: These helpers provide additional features that facilitate or improve the endpoint usage in SLINGR.
+- **Additional Helpers**: These helpers provide additional features that facilitate or improve the package usage in SLINGR.
 
 ## HTTP requests
 You can make `GET`,`POST` requests to the [pandadoc API](https://api.pandadoc.com) like this:

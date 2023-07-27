@@ -1,3 +1,9 @@
+/****************************************************
+ Dependencies
+ ****************************************************/
+
+var httpService = dependencies.http;
+
 /**
  * This flow step will send generic request.
  *
@@ -54,23 +60,23 @@ step.apiCallPandadoc = function (inputs) {
 
 	switch (inputsLogic.method.toLowerCase()) {
 		case 'get':
-			return endpoint._get(options);
+			return httpService.get(options);
 		case 'post':
-			return endpoint._post(options);
+			return httpService.post(options);
 		case 'delete':
-			return endpoint._delete(options);
+			return httpService.delete(options);
 		case 'put':
-			return endpoint._put(options);
+			return httpService.put(options);
 		case 'connect':
-			return endpoint._connect(options);
+			return httpService.connect(options);
 		case 'head':
-			return endpoint._head(options);
+			return httpService.head(options);
 		case 'options':
-			return endpoint._options(options);
+			return httpService.options(options);
 		case 'patch':
-			return endpoint._patch(options);
+			return httpService.patch(options);
 		case 'trace':
-			return endpoint._trace(options);
+			return httpService.trace(options);
 	}
 
 	

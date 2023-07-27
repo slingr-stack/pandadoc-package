@@ -31,3 +31,27 @@ step.createDocumentFromPdfPandadoc = function (inputs) {
     });
 
 }
+
+/*
+,
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/createDocumentFromPdfPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/downloadDocumentPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/listDocumentsPandadoc"
+		},
+		{
+			"type": "flowStep",
+			"namespace": "steps",
+			"path": "/flowSteps/sendDocumentPandadoc"
+		}
+ */

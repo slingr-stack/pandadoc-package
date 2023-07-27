@@ -2,7 +2,36 @@
  Dependencies
  ****************************************************/
 
-var httpService = dependencies.http;
+var httpReference = dependencies.http;
+
+var httpDependency = {
+    get: httpReference.get,
+    post: httpReference.post,
+    put: httpReference.put,
+    patch: httpReference.patch,
+    delete: httpReference.delete,
+    head: httpReference.head,
+    options: httpReference.options
+};
+var httpService = {};
+
+function handleRequestWithRetry(requestFn, options, callbackData, callbacks) {
+    try {
+        return requestFn(options, callbackData, callbacks);
+    } catch (error) {
+        sys.logs.error("[pandadoc] Handling request "+ JSON.stringify(error));
+    }
+}
+
+function createWrapperFunction(requestFn) {
+    return function(options, callbackData, callbacks) {
+        return handleRequestWithRetry(requestFn, options, callbackData, callbacks);
+    };
+}
+
+for (var key in httpDependency) {
+    if (typeof httpDependency[key] === 'function') httpService[key] = createWrapperFunction(httpDependency[key]);
+}
 
 /****************************************************
  Helpers
