@@ -9,13 +9,13 @@
     <tbody>
     <tr>
         <td>PandaDoc package</td>
-        <td>July 27, 2023</td>
+        <td>August 25, 2023</td>
         <td>Detailed description of the API of the PandaDoc package.</td>
     </tr>
     </tbody>
 </table>
 
-## Overview
+# Overview
 
 The PandaDoc package has the following features:
  
@@ -140,17 +140,17 @@ The Javascript API of the pandadoc package has three pieces:
 
 - **HTTP requests**: These allow making regular HTTP requests.
 - **Shortcuts**: These are helpers to make HTTP request to the API in a more convenient way.
-- **Additional Helpers**: These helpers provide additional features that facilitate or improve the package usage in SLINGR.
+- **Additional Helpers**: These helpers provide additional features that facilitate or improves the package usage in SLINGR.
 
 ## HTTP requests
 You can make `GET`,`POST` requests to the [pandadoc API](https://api.pandadoc.com) like this:
 ```javascript
-var response = pkg.pandadoc.functions.get('/documents/:documentId/download')
-var response = pkg.pandadoc.functions.post('/documents/:documentId/send', body)
-var response = pkg.pandadoc.functions.post('/documents/:documentId/send')
+var response = pkg.pandadoc.functions.get('/templates')
+var response = pkg.pandadoc.functions.post('/documents/:documentId/session', body)
+var response = pkg.pandadoc.functions.post('/documents/:documentId/session')
 ```
 
-Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service#javascript-api)
+Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service)
 for more information about generic requests.
 
 ## Shortcuts
@@ -167,10 +167,22 @@ Instead of having to use the generic HTTP methods, you can (and should) make use
 pkg.pandadoc.functions.documents.get()
 ```
 ---
+* API URL: '/documents'
+* HTTP Method: 'POST'
+```javascript
+pkg.pandadoc.functions.documents.post(body)
+```
+---
 * API URL: '/documents/:documentId'
 * HTTP Method: 'GET'
 ```javascript
 pkg.pandadoc.functions.documents.get()
+```
+---
+* API URL: '/documents/:fileId'
+* HTTP Method: 'POST'
+```javascript
+pkg.pandadoc.functions.documents.post(body)
 ```
 ---
 * API URL: '/documents/:documentId/details'
@@ -185,30 +197,6 @@ pkg.pandadoc.functions.documents.details.get(documentId)
 pkg.pandadoc.functions.documents.download.get(documentId)
 ```
 ---
-* API URL: '/templates'
-* HTTP Method: 'GET'
-```javascript
-pkg.pandadoc.functions.templates.get()
-```
----
-* API URL: '/templates/:templateId/details'
-* HTTP Method: 'GET'
-```javascript
-pkg.pandadoc.functions.templates.details.get(templateId)
-```
----
-* API URL: '/documents'
-* HTTP Method: 'POST'
-```javascript
-pkg.pandadoc.functions.documents.post(body)
-```
----
-* API URL: '/documents/:fileId'
-* HTTP Method: 'POST'
-```javascript
-pkg.pandadoc.functions.documents.post(fileId, body)
-```
----
 * API URL: '/documents/:documentId/send'
 * HTTP Method: 'POST'
 ```javascript
@@ -219,6 +207,18 @@ pkg.pandadoc.functions.documents.send.post(documentId, body)
 * HTTP Method: 'POST'
 ```javascript
 pkg.pandadoc.functions.documents.session.post(documentId, body)
+```
+---
+* API URL: '/templates'
+* HTTP Method: 'GET'
+```javascript
+pkg.pandadoc.functions.templates.get()
+```
+---
+* API URL: '/templates/:templateId/details'
+* HTTP Method: 'GET'
+```javascript
+pkg.pandadoc.functions.templates.details.get(templateId)
 ```
 ---
 
@@ -667,12 +667,12 @@ switch (event.data.event) {
 ## Dependencies
 * HTTP Service (Latest Version)
 
-## About SLINGR
+# About SLINGR
 
 SLINGR is a low-code rapid application development platform that accelerates development, with robust architecture for integrations and executing custom workflows and automation.
 
 [More info about SLINGR](https://slingr.io)
 
-## License
+# License
 
 This package is licensed under the Apache License 2.0. See the `LICENSE` file for more details.

@@ -19,7 +19,7 @@ function handleRequestWithRetry(requestFn, options, callbackData, callbacks) {
     try {
         return requestFn(options, callbackData, callbacks);
     } catch (error) {
-        sys.logs.error("[pandadoc] Handling request "+ JSON.stringify(error));
+        sys.logs.info("[pandadoc] Handling request "+ JSON.stringify(error));
     }
 }
 
@@ -326,13 +326,6 @@ var parse = function (str) {
 }
 
 /****************************************************
- Constants
- ****************************************************/
-
-var PANDADOC_API_BASE_URL = "https://api.pandadoc.com";
-var PANDADOC_API_URL = PANDADOC_API_BASE_URL+"/public/v1";
-
-/****************************************************
  Configurator
  ****************************************************/
 
@@ -349,7 +342,7 @@ var PandaDoc = function (options) {
 
 function setApiUri(options) {
     var url = options.path || "";
-    options.url = PANDADOC_API_URL + url;
+    options.url = config.get("PANDADOC_API_BASE_URL") + url;
     sys.logs.debug('[pandadoc] Set url: ' + options.path + "->" + options.url);
     return options;
 }

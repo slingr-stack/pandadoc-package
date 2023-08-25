@@ -45,7 +45,7 @@ step.apiCallPandadoc = function (inputs) {
 
 
 	var options = {
-		path: parse(inputsLogic.url.urlValue, inputsLogic.url.paramsValue),
+		url: config.get("PANDADOC_API_BASE_URL") + parse(inputsLogic.url.urlValue, inputsLogic.url.paramsValue),
 		params: inputsLogic.params,
 		headers: inputsLogic.headers,
 		body: inputsLogic.body,
@@ -78,8 +78,6 @@ step.apiCallPandadoc = function (inputs) {
 		case 'trace':
 			return httpService.trace(options);
 	}
-
-	
 
 	return null;
 };

@@ -1,3 +1,9 @@
+/****************************************************
+ Dependencies
+ ****************************************************/
+
+var httpService = dependencies.http;
+
 /**
  * This flow step will send generic request.
  *
@@ -19,5 +25,5 @@ step.downloadDocumentPandadoc = function (inputs) {
     fileName: inputs.fileName
   }
 
-  return endpoint._get(options);
+  return httpService.get(options);
 }

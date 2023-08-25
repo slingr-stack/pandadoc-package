@@ -1,3 +1,9 @@
+/****************************************************
+ Dependencies
+ ****************************************************/
+
+var httpService = dependencies.http;
+
 /**
  * This flow step will send generic request.
  *
@@ -25,5 +31,5 @@ step.sendDocumentPandadoc = function (inputs) {
   }
 
 
-  return endpoint._post(options);
+  return httpService.post(options);
 }
