@@ -113,7 +113,7 @@
     "metadata": [
         {
             "type": "script",
-            "namespace": "api",
+            "namespace": "functions",
             "path": "/scripts/functions.js"
         },
         {
@@ -123,27 +123,27 @@
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "apiCallPandadoc",
             "path": "/flowSteps/apiCallPandadoc"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "createDocumentFromPdfPandadoc",
             "path": "/flowSteps/createDocumentFromPdfPandadoc"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "downloadDocumentPandadoc",
             "path": "/flowSteps/downloadDocumentPandadoc"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "listDocumentsPandadoc",
             "path": "/flowSteps/listDocumentsPandadoc"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "sendDocumentPandadoc",
             "path": "/flowSteps/sendDocumentPandadoc"
         }
     ]
