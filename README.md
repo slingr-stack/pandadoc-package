@@ -1,4 +1,4 @@
-<table>
+<table class="table" style="margin-top: 10px">
     <thead>
     <tr>
         <th>Title</th>
@@ -9,7 +9,7 @@
     <tbody>
     <tr>
         <td>PandaDoc package</td>
-        <td>August 25, 2023</td>
+        <td>November 13, 2023</td>
         <td>Detailed description of the API of the PandaDoc package.</td>
     </tr>
     </tbody>
@@ -30,17 +30,10 @@ Please make sure you take a look at the documentation from PandaDoc as features 
 
 ## Quick start
 
-Once you configured the package and authorized the package, you can list current documents with this call:
+Once you configured the package and authorized the package, you can create a new document from a template like this:
 
 ```js
-var docs = pkg.pandadoc.functions.documents.get({count: 5});
-log('docs: '+JSON.stringify(docs));
-```
-
-You can create a new document from a template like this:
-
-```js
-var res = pkg.pandadoc.functions.documents.post({
+var res = pkg.pandadoc.api.documents.post({
   name: 'Test document 1',
   template_uuid: 'JkVkR9jrKKBKdRe2z3fMqU',
   recipients: [  
@@ -105,13 +98,13 @@ The client secret of the PandaDoc application. This field needs to be entered be
 
 ### Access token
 
-In order to get this token, you need to click on the button `Request token`.
+To get this token, you need to click on the button `Request token`.
 Once you complete the authorization process,
 this field will be set.
 
 ### Refresh token
 
-In order to get this token, you need to click on the button `Request token`. 
+To get this token, you need to click on the button `Request token`. 
 Once you complete the authorization process,
 this field will be set.
 
@@ -136,18 +129,17 @@ in the webhook integration.
 
 # Javascript API
 
-The Javascript API of the pandadoc package has three pieces:
+The Javascript API of the pandadoc package has two pieces:
 
-- **HTTP requests**: These allow making regular HTTP requests.
-- **Shortcuts**: These are helpers to make HTTP request to the API in a more convenient way.
-- **Additional Helpers**: These helpers provide additional features that facilitate or improves the package usage in SLINGR.
+- **HTTP requests**
+- **Flow steps**
 
 ## HTTP requests
 You can make `GET`,`POST` requests to the [pandadoc API](https://api.pandadoc.com) like this:
 ```javascript
-var response = pkg.pandadoc.functions.get('/templates')
-var response = pkg.pandadoc.functions.post('/documents/:documentId/session', body)
-var response = pkg.pandadoc.functions.post('/documents/:documentId/session')
+var response = pkg.pandadoc.api.get('/templates')
+var response = pkg.pandadoc.api.post('/documents/:documentId/session', body)
+var response = pkg.pandadoc.api.post('/documents/:documentId/session')
 ```
 
 Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service)
@@ -161,64 +153,23 @@ Instead of having to use the generic HTTP methods, you can (and should) make use
 
 <br>
 
-* API URL: '/documents'
-* HTTP Method: 'GET'
-```javascript
-pkg.pandadoc.functions.documents.get()
-```
 ---
 * API URL: '/documents'
 * HTTP Method: 'POST'
 ```javascript
-pkg.pandadoc.functions.documents.post(body)
-```
----
-* API URL: '/documents/:documentId'
-* HTTP Method: 'GET'
-```javascript
-pkg.pandadoc.functions.documents.get()
-```
----
-* API URL: '/documents/:fileId'
-* HTTP Method: 'POST'
-```javascript
-pkg.pandadoc.functions.documents.post(body)
-```
----
-* API URL: '/documents/:documentId/details'
-* HTTP Method: 'GET'
-```javascript
-pkg.pandadoc.functions.documents.details.get(documentId)
+pkg.pandadoc.api.documents.post(body)
 ```
 ---
 * API URL: '/documents/:documentId/download'
 * HTTP Method: 'GET'
 ```javascript
-pkg.pandadoc.functions.documents.download.get(documentId)
-```
----
-* API URL: '/documents/:documentId/send'
-* HTTP Method: 'POST'
-```javascript
-pkg.pandadoc.functions.documents.send.post(documentId, body)
+pkg.pandadoc.api.documents.download.get(documentId)
 ```
 ---
 * API URL: '/documents/:documentId/session'
 * HTTP Method: 'POST'
 ```javascript
-pkg.pandadoc.functions.documents.session.post(documentId, body)
-```
----
-* API URL: '/templates'
-* HTTP Method: 'GET'
-```javascript
-pkg.pandadoc.functions.templates.get()
-```
----
-* API URL: '/templates/:templateId/details'
-* HTTP Method: 'GET'
-```javascript
-pkg.pandadoc.functions.templates.details.get(templateId)
+pkg.pandadoc.api.documents.session.post(documentId, body)
 ```
 ---
 
@@ -231,8 +182,6 @@ As an alternative option to using scripts, you can make use of Flows and Flow St
     <summary>Click here to see the Flow Steps</summary>
 
 <br>
-
-
 
 ### Generic Flow Step
 
@@ -640,29 +589,6 @@ Move a document to send status and send an optional email.
 
 
 </details>
-
-## Additional Helpers
-*MANUALLY ADD THE DOCUMENTATION OF THESE HELPERS HERE...*
-
-
-## Events
-
-### Webhook
-
-If webhooks were configured, you will receive events when the status of documents changes. You can find more information
-about the format of events in the [PandaDoc's documentation](https://developers.pandadoc.com/v1/reference#on-document-status-change).
-
-The only difference is that the package will send events individually instead of sending a list of events. This way you
-should process events like this in your listeners:
-
-```js
-sys.logs.info('doc name: '+event.data.data.name);
-sys.logs.info('doc status: '+event.data.data.status);
-switch (event.data.event) {
-    case 'recipient_completed':
-        // ... do something
-}
-```
 
 ## Dependencies
 * HTTP Service (Latest Version)

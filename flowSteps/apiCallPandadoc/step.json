@@ -5,46 +5,53 @@
   "description": "This flow step will send generic request to pandadoc",
   "inputs": [
     {
-      "label": "Url",
-      "name": "url",
-      "description": "The method and path to which this endpoint is to send requests in a generic way.",
-      "type": "urlParams",
+      "label": "Method",
+      "name": "method",
+      "description": "The method to which this service will send the request.",
+      "type": "dropDown",
+      "multiplicity": "one",
       "required": "true",
+      "defaultValue": "get",
       "options": {
-        "type": "dropDown",
         "possibleValues": [
-            {
-              "label": "GET /documents"
-            },
-            {
-              "label": "GET /documents/{documentId}"
-            },
-            {
-              "label": "GET /documents/{documentId}/details"
-            },
-            {
-              "label": "GET /documents/{documentId}/download"
-            },
-            {
-              "label": "GET /templates"
-            },
-            {
-              "label": "GET /templates/{templateId}/details"
-            },
-            {
-              "label": "POST /documents"
-            },
-            {
-              "label": "POST /documents/{fileId}"
-            },
-            {
-              "label": "POST /documents/{documentId}/send"
-            },
-            {
-              "label": "POST /documents/{documentId}/session"
-            }
-        ]
+          {
+            "label": "GET",
+            "name": "get"
+          },
+          {
+            "label": "POST",
+            "name": "post"
+          },
+          {
+            "label": "PUT",
+            "name": "put"
+          },
+          {
+            "label": "DELETE",
+            "name": "delete"
+          },
+          {
+            "label": "PATCH",
+            "name": "patch"
+          },
+          {
+            "label": "OPTIONS",
+            "name": "options"
+          },
+          {
+            "label": "HEAD",
+            "name": "head"
+          }
+        ],
+        "allowContextSelector": "false"
       }
+    },
+    {
+      "label": "Path",
+      "name": "path",
+      "description": "The URL to which this service will send the request.",
+      "type": "urlParams",
+      "required": "true"
     },
     {
       "label": "Headers",
