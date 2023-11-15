@@ -50,7 +50,7 @@ exports.documents.download = {};
 
 exports.documents.post = function(fileId, httpOptions) {
     if(!httpOptions){
-        for (let i = 0 ; i < arguments.length; i++){
+        for (var i = 0 ; i < arguments.length; i++){
             if (isObject(arguments[i])){
                 httpOptions = arguments[i];
             }
