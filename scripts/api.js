@@ -64,20 +64,22 @@ exports.documents.post = function(fileId, httpOptions) {
         case 2:
             return httpService.post({
                 path: '/documents',
-                multipart: true,
-                parts: [
-                    {
-                        name: 'file',
-                        type: 'file',
-                        fileId: fileId
-                    },
-                    {
-                        name: 'data',
-                        type: 'other',
-                        contentType: 'application/json',
-                        content: httpOptions
-                    }
-                ]
+                settings: {
+                    multipart: true,
+                    parts: [
+                        {
+                            name: 'file',
+                            type: 'file',
+                            fileId: fileId
+                        },
+                        {
+                            name: 'data',
+                            type: 'other',
+                            contentType: 'application/json',
+                            content: httpOptions
+                        }
+                    ]
+                }
             });
         default:
             sys.logs.error('Invalid argument received.');
@@ -111,9 +113,11 @@ exports.documents.download.get = function(documentId, httpOptions) {
 
     httpOptions = {
         path:url,
-        forceDownload: true,
-        downloadSync: true,
-        fileName: 'document.pdf'
+        settings: {
+            forceDownload: true,
+            downloadSync: true,
+            fileName: 'document.pdf'
+        }
     };
 
     let options = checkHttpOptions(url, httpOptions);
